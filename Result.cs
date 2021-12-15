@@ -14,6 +14,7 @@ namespace Discrete_Math_Project
     {
         DataTable result; //Passed from the main form
         DataTable matrix; //Matrix that hold the 1 and 0
+        DataTable matrix_square; //matrix*matrix = matrix_square => For checking Transitive
         int number_of_row;
         int[,] multid_array_for_table;
         int max_number_to_create_matrix;
@@ -38,6 +39,7 @@ namespace Discrete_Math_Project
             {
                 reflexive = isReflexive();
                 symmetric = isSymmetric();
+                antisymmetric = isAntiSymmetric();
 
             }
             catch (Exception)
@@ -55,9 +57,9 @@ namespace Discrete_Math_Project
         private bool isReflexive()
         {
             string bool_string = "0";
-            for (int i = min_number_to_create_matrix; i <= max_number_to_create_matrix; i++)
+            for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
             {
-                bool_string = matrix.Rows[i - min_number_to_create_matrix][i - min_number_to_create_matrix].ToString();
+                bool_string = matrix.Rows[i][i].ToString();
                 Console.WriteLine(bool_string);
                 if (bool_string == "0") return false;
             }                    
@@ -68,19 +70,43 @@ namespace Discrete_Math_Project
             string string_xy = "0";
             string string_yx = "0";
 
-            for (int i = min_number_to_create_matrix; i <= max_number_to_create_matrix; i++)
+            for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
             {
-                for (int j = min_number_to_create_matrix; j <= max_number_to_create_matrix; j++)
+                for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; j++)
                 {
-                    string_xy = matrix.Rows[i - min_number_to_create_matrix][j - min_number_to_create_matrix].ToString();
-                    string_yx = matrix.Rows[j - min_number_to_create_matrix][i - min_number_to_create_matrix].ToString();
+                    //string_xy = matrix.Rows[i - min_number_to_create_matrix][j - min_number_to_create_matrix].ToString();
+                    //string_yx = matrix.Rows[j - min_number_to_create_matrix][i - min_number_to_create_matrix].ToString();
+                    string_xy = matrix.Rows[i][j].ToString();
                     if (((string_xy == "1") && (string_yx == "0")) || ((string_xy == "0") && (string_yx == "1")))
                         return false;
                 }
             }
             return true;
         }
+        private bool isAntiSymmetric()
+        {
+            string string_xy = "0";
+            string string_yx = "0";
+            for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
+            {
+                for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; j++)
+                {
+                    //string_xy = matrix.Rows[i - min_number_to_create_matrix][j - min_number_to_create_matrix].ToString();
+                    //string_yx = matrix.Rows[j - min_number_to_create_matrix][i - min_number_to_create_matrix].ToString();
+                    string_xy = matrix.Rows[i][j].ToString();
+                    string_yx = matrix.Rows[j][i].ToString();
+                    if ((string_xy == "1") && (string_yx == "1") && (i != j))
+                        return false;
+                }    
+            }    
+            return true;
+        }
+        private bool isTransitive()
+        {
 
+
+            return true;
+        }
         #endregion
 
 
@@ -171,6 +197,46 @@ namespace Discrete_Math_Project
             {
                 MessageBox.Show("Cannot create matrix!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }    
+        }
+        private void square_a_matrix()
+        {
+            try
+            {
+                int square_cell = 0;
+                int c1 = 0;
+                int c2 = 0;
+
+                this.matrix_square = new DataTable();
+                matrix_square.Clear();
+                for (int i = min_number_to_create_matrix; i <= max_number_to_create_matrix; i++)
+                {
+                    matrix_square.Columns.Add(i.ToString());
+                }
+                for (int i = min_number_to_create_matrix; i <= max_number_to_create_matrix; i++)
+                {
+                    DataRow row_data = matrix_square.NewRow();
+                    for (int j = min_number_to_create_matrix; j <= max_number_to_create_matrix; j++)
+                        row_data[j.ToString()] = "0";
+                    matrix_square.Rows.Add(row_data);
+                }
+
+                for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
+                {  
+                    for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; j++)
+                    {                        
+                        for (int k = 0; k <= max_number_to_create_matrix - min_number_to_create_matrix; k++)
+                        {
+
+
+                            square_cell = square_cell + 1;
+                        }
+                    }    
+                }    
+            }   
+            catch(Exception)
+            {
+                MessageBox.Show("Cannot create square matrix!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
     }
