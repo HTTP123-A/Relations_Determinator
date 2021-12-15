@@ -33,6 +33,7 @@ namespace Discrete_Math_Project
             InitializeComponent();
             this.result = temp;
             this.number_of_row = elements;
+            this.Equivalence_Class_Btn.Enabled = false;
 
             Max_Elements();
             create_Matrix();
@@ -45,6 +46,10 @@ namespace Discrete_Math_Project
                 symmetric = isSymmetric();
                 antisymmetric = isAntiSymmetric();
                 transitive = isTransitive();
+                partial_order = isPartial();
+
+                equivalent = isEquivalent();
+                if (equivalent) this.Equivalence_Class_Btn.Enabled = true;
             }
             catch (Exception)
             {
@@ -130,16 +135,30 @@ namespace Discrete_Math_Project
         }
         private bool isPartial()
         {
-
-            return true;
+            if (reflexive && antisymmetric && transitive)
+            {
+                return true;
+            }
+            return false;
         }
         private bool isTotal()
         {
+            string cell = "0";
+            for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
+                for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
+                {
+                    cell = matrix.Rows[i][j].ToString();
+                    if (cell == "0") return false;
+                }
             return true;
         }
         private bool isEquivalent()
         {
-            return true;
+            if (reflexive && symmetric && transitive)
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
 
@@ -292,10 +311,18 @@ namespace Discrete_Math_Project
         }
         #endregion
 
-        #region message to disable relation button
+        #region Message to re-enable INPUT button
         private void Result_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+        #endregion
+
+        #region Button Controls
+        private void Equivalence_Class_Btn_Click(object sender, EventArgs e)
+        {
+            Form Equi_Classes_Form = new Equivalence_Classes(matrix, min_number_to_create_matrix, max_number_to_create_matrix);
+            Equi_Classes_Form.ShowDialog();            
         }
         #endregion
     }

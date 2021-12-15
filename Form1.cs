@@ -18,7 +18,9 @@ namespace Discrete_Math_Project
         public Form1()
         {
             InitializeComponent();
+            this.Element_Count_TextBox.Focus();
             this.Relation_Btn.Enabled = false;
+            this.Enter_Btn.Enabled = false;            
         }
 
         #region Enter button to enter data
@@ -26,6 +28,7 @@ namespace Discrete_Math_Project
         {
             try
             {
+                this.Enter_Btn.Enabled = true;
                 Num_Of_Element = int.Parse(this.Element_Count_TextBox.Text.ToString());
                 this.Elements = new DataTable();
                 Elements.Clear();

@@ -41,6 +41,7 @@ namespace Discrete_Math_Project
             this.CB_Equivalent = new System.Windows.Forms.CheckBox();
             this.CB_Total = new System.Windows.Forms.CheckBox();
             this.CB_Partial = new System.Windows.Forms.CheckBox();
+            this.Equivalence_Class_Btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -78,6 +79,7 @@ namespace Discrete_Math_Project
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.Equivalence_Class_Btn);
             this.panel3.Controls.Add(this.CB_Equivalent);
             this.panel3.Controls.Add(this.CB_Total);
             this.panel3.Controls.Add(this.CB_Partial);
@@ -191,6 +193,20 @@ namespace Discrete_Math_Project
             this.CB_Partial.Text = "Partial Order";
             this.CB_Partial.UseVisualStyleBackColor = true;
             // 
+            // Equivalence_Class_Btn
+            // 
+            this.Equivalence_Class_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Equivalence_Class_Btn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Equivalence_Class_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Equivalence_Class_Btn.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Equivalence_Class_Btn.Location = new System.Drawing.Point(0, 311);
+            this.Equivalence_Class_Btn.Name = "Equivalence_Class_Btn";
+            this.Equivalence_Class_Btn.Size = new System.Drawing.Size(164, 50);
+            this.Equivalence_Class_Btn.TabIndex = 7;
+            this.Equivalence_Class_Btn.Text = "Equivalence Classes";
+            this.Equivalence_Class_Btn.UseVisualStyleBackColor = false;
+            this.Equivalence_Class_Btn.Click += new System.EventHandler(this.Equivalence_Class_Btn_Click);
+            // 
             // Result
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,5 +241,6 @@ namespace Discrete_Math_Project
         private System.Windows.Forms.CheckBox CB_Equivalent;
         private System.Windows.Forms.CheckBox CB_Total;
         private System.Windows.Forms.CheckBox CB_Partial;
+        private System.Windows.Forms.Button Equivalence_Class_Btn;
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Equivalence_Classes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equivalence_Classes.Designer.cs">
+      <DependentUpon>Equivalence_Classes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     <Compile Include="Result.Designer.cs">
       <DependentUpon>Result.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Equivalence_Classes.resx">
+      <DependentUpon>Equivalence_Classes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
