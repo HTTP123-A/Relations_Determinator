@@ -42,7 +42,7 @@ namespace Discrete_Math_Project
 
                 this.DGV_Elements.DataSource = Elements;
                 this.Elements.Dispose();
-                MessageBox.Show("Add successfully number of elements!", "Number of Element:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Add successfully number of elements!", "Number of Element:", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception)
             {
@@ -69,8 +69,13 @@ namespace Discrete_Math_Project
         {
             try
             {
+                this.Num_Element_Btn.Enabled = false;
+                this.Relation_Btn.Enabled = false;
                 Form Result_Form = new Result(Elements, Num_Of_Element);
                 Result_Form.ShowDialog();
+                
+                if (Result_Form.DialogResult == DialogResult.OK)                                     
+                    this.Num_Element_Btn.Enabled = true;                
             }
             catch(Exception)
             {

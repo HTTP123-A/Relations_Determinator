@@ -18,21 +18,25 @@ namespace Discrete_Math_Project
         int number_of_row;
         int[,] multid_array_for_table;
         int max_number_to_create_matrix;
-        int min_number_to_create_matrix;       
+        int min_number_to_create_matrix;
 
         bool reflexive = false;
         bool symmetric = false;
         bool antisymmetric = false;
         bool transitive = false;
+        bool partial_order = false;
+        bool total_order = false;
+        bool equivalent = false;
 
         public Result(DataTable temp, int elements)
         {
             InitializeComponent();
             this.result = temp;
             this.number_of_row = elements;
-            
+
             Max_Elements();
             create_Matrix();
+            square_a_matrix();
 
             #region Checking Relation
             try
@@ -40,7 +44,7 @@ namespace Discrete_Math_Project
                 reflexive = isReflexive();
                 symmetric = isSymmetric();
                 antisymmetric = isAntiSymmetric();
-
+                transitive = isTransitive();
             }
             catch (Exception)
             {
@@ -62,7 +66,7 @@ namespace Discrete_Math_Project
                 bool_string = matrix.Rows[i][i].ToString();
                 Console.WriteLine(bool_string);
                 if (bool_string == "0") return false;
-            }                    
+            }
             return true;
         }
         private bool isSymmetric()
@@ -77,6 +81,7 @@ namespace Discrete_Math_Project
                     //string_xy = matrix.Rows[i - min_number_to_create_matrix][j - min_number_to_create_matrix].ToString();
                     //string_yx = matrix.Rows[j - min_number_to_create_matrix][i - min_number_to_create_matrix].ToString();
                     string_xy = matrix.Rows[i][j].ToString();
+                    string_yx = matrix.Rows[j][i].ToString();
                     if (((string_xy == "1") && (string_yx == "0")) || ((string_xy == "0") && (string_yx == "1")))
                         return false;
                 }
@@ -97,14 +102,43 @@ namespace Discrete_Math_Project
                     string_yx = matrix.Rows[j][i].ToString();
                     if ((string_xy == "1") && (string_yx == "1") && (i != j))
                         return false;
-                }    
-            }    
+                }
+            }
             return true;
         }
         private bool isTransitive()
         {
+            string cell_in_matrix = "0";
+            string cell_in_square_matrix = "0";
+            for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
+            {
+                Console.WriteLine("Something");
+                for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; j++)
+                {
+                    cell_in_matrix = matrix.Rows[i][j].ToString();
+                    cell_in_square_matrix = matrix_square.Rows[i][j].ToString();
 
+                    //Console.WriteLine(cell_in_matrix + "    " + cell_in_square_matrix);
+                    /*if (cell_in_matrix == "1" && cell_in_square_matrix == "0") Console.Write("0" + "   ");
+                    else Console.Write("0" + "  ");*/
 
+                    if ((cell_in_square_matrix == "1") && (cell_in_matrix == "0"))
+                        return false;
+                }
+            }
+            return true;
+        }
+        private bool isPartial()
+        {
+
+            return true;
+        }
+        private bool isTotal()
+        {
+            return true;
+        }
+        private bool isEquivalent()
+        {
             return true;
         }
         #endregion
@@ -113,10 +147,13 @@ namespace Discrete_Math_Project
         #region Display Properties
         private void Display_Props()
         {
-            CB_isReflexive.Checked = reflexive;
-            CB_isSymmetric.Checked = symmetric;
-            CB_isAntiSymmetric.Checked = antisymmetric;
-            CB_Transitive.Checked = transitive;
+            this.CB_isReflexive.Checked = reflexive;
+            this.CB_isSymmetric.Checked = symmetric;
+            this.CB_isAntiSymmetric.Checked = antisymmetric;
+            this.CB_Transitive.Checked = transitive;
+            this.CB_Partial.Checked = partial_order;
+            this.CB_Total.Checked = total_order;
+            this.CB_Equivalent.Checked = equivalent;            
         }
         #endregion
 
@@ -202,9 +239,10 @@ namespace Discrete_Math_Project
         {
             try
             {
+                string square_cell_string = "0";
                 int square_cell = 0;
-                int c1 = 0;
-                int c2 = 0;
+                int m1 = 0;
+                int m2 = 0;
 
                 this.matrix_square = new DataTable();
                 matrix_square.Clear();
@@ -226,17 +264,38 @@ namespace Discrete_Math_Project
                     {                        
                         for (int k = 0; k <= max_number_to_create_matrix - min_number_to_create_matrix; k++)
                         {
+                            m1 = int.Parse(matrix.Rows[i][k].ToString());
+                            m2 = int.Parse(matrix.Rows[k][j].ToString());
 
-
-                            square_cell = square_cell + 1;
+                            square_cell += m1*m2;
                         }
+                        square_cell_string = square_cell.ToString();
+                        matrix_square.Rows[i][j] = square_cell_string;
+                        square_cell = 0;
                     }    
-                }    
+                }
+
+                for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
+                {
+                    for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; j++)
+                    {
+                        Console.Write(matrix_square.Rows[i][j].ToString() + "   ");
+                    }
+                    Console.WriteLine("");
+                }
+
             }   
             catch(Exception)
             {
                 MessageBox.Show("Cannot create square matrix!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        #endregion
+
+        #region message to disable relation button
+        private void Result_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
         #endregion
     }

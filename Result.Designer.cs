@@ -38,6 +38,9 @@ namespace Discrete_Math_Project
             this.CB_isSymmetric = new System.Windows.Forms.CheckBox();
             this.CB_isReflexive = new System.Windows.Forms.CheckBox();
             this.Result_Matrix = new System.Windows.Forms.DataGridView();
+            this.CB_Equivalent = new System.Windows.Forms.CheckBox();
+            this.CB_Total = new System.Windows.Forms.CheckBox();
+            this.CB_Partial = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -75,6 +78,9 @@ namespace Discrete_Math_Project
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.CB_Equivalent);
+            this.panel3.Controls.Add(this.CB_Total);
+            this.panel3.Controls.Add(this.CB_Partial);
             this.panel3.Controls.Add(this.CB_Transitive);
             this.panel3.Controls.Add(this.CB_isAntiSymmetric);
             this.panel3.Controls.Add(this.CB_isSymmetric);
@@ -87,6 +93,7 @@ namespace Discrete_Math_Project
             // 
             // CB_Transitive
             // 
+            this.CB_Transitive.AutoCheck = false;
             this.CB_Transitive.AutoSize = true;
             this.CB_Transitive.Dock = System.Windows.Forms.DockStyle.Top;
             this.CB_Transitive.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -99,6 +106,7 @@ namespace Discrete_Math_Project
             // 
             // CB_isAntiSymmetric
             // 
+            this.CB_isAntiSymmetric.AutoCheck = false;
             this.CB_isAntiSymmetric.AutoSize = true;
             this.CB_isAntiSymmetric.Dock = System.Windows.Forms.DockStyle.Top;
             this.CB_isAntiSymmetric.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,6 +119,7 @@ namespace Discrete_Math_Project
             // 
             // CB_isSymmetric
             // 
+            this.CB_isSymmetric.AutoCheck = false;
             this.CB_isSymmetric.AutoSize = true;
             this.CB_isSymmetric.Dock = System.Windows.Forms.DockStyle.Top;
             this.CB_isSymmetric.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,6 +132,7 @@ namespace Discrete_Math_Project
             // 
             // CB_isReflexive
             // 
+            this.CB_isReflexive.AutoCheck = false;
             this.CB_isReflexive.AutoSize = true;
             this.CB_isReflexive.Dock = System.Windows.Forms.DockStyle.Top;
             this.CB_isReflexive.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,6 +152,45 @@ namespace Discrete_Math_Project
             this.Result_Matrix.Size = new System.Drawing.Size(774, 361);
             this.Result_Matrix.TabIndex = 0;
             // 
+            // CB_Equivalent
+            // 
+            this.CB_Equivalent.AutoCheck = false;
+            this.CB_Equivalent.AutoSize = true;
+            this.CB_Equivalent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CB_Equivalent.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_Equivalent.Location = new System.Drawing.Point(0, 162);
+            this.CB_Equivalent.Name = "CB_Equivalent";
+            this.CB_Equivalent.Size = new System.Drawing.Size(164, 27);
+            this.CB_Equivalent.TabIndex = 6;
+            this.CB_Equivalent.Text = "Equivalent";
+            this.CB_Equivalent.UseVisualStyleBackColor = true;
+            // 
+            // CB_Total
+            // 
+            this.CB_Total.AutoCheck = false;
+            this.CB_Total.AutoSize = true;
+            this.CB_Total.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CB_Total.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_Total.Location = new System.Drawing.Point(0, 135);
+            this.CB_Total.Name = "CB_Total";
+            this.CB_Total.Size = new System.Drawing.Size(164, 27);
+            this.CB_Total.TabIndex = 5;
+            this.CB_Total.Text = "Total Order";
+            this.CB_Total.UseVisualStyleBackColor = true;
+            // 
+            // CB_Partial
+            // 
+            this.CB_Partial.AutoCheck = false;
+            this.CB_Partial.AutoSize = true;
+            this.CB_Partial.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CB_Partial.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_Partial.Location = new System.Drawing.Point(0, 108);
+            this.CB_Partial.Name = "CB_Partial";
+            this.CB_Partial.Size = new System.Drawing.Size(164, 27);
+            this.CB_Partial.TabIndex = 4;
+            this.CB_Partial.Text = "Partial Order";
+            this.CB_Partial.UseVisualStyleBackColor = true;
+            // 
             // Result
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +200,7 @@ namespace Discrete_Math_Project
             this.Controls.Add(this.panel1);
             this.Name = "Result";
             this.Text = "Result";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Result_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -172,5 +222,8 @@ namespace Discrete_Math_Project
         private System.Windows.Forms.CheckBox CB_isAntiSymmetric;
         private System.Windows.Forms.CheckBox CB_isSymmetric;
         private System.Windows.Forms.CheckBox CB_isReflexive;
+        private System.Windows.Forms.CheckBox CB_Equivalent;
+        private System.Windows.Forms.CheckBox CB_Total;
+        private System.Windows.Forms.CheckBox CB_Partial;
     }
 }
