@@ -18,5 +18,6 @@ namespace Discrete_Math_Project
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+        //Haha Phuc dau buoi
     }
 }
