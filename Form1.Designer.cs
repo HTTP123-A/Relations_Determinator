@@ -61,10 +61,10 @@ namespace Discrete_Math_Project
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(258, 25);
+            this.label1.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(229, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 24);
+            this.label1.Size = new System.Drawing.Size(243, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Relation Detector";
             // 
@@ -117,6 +117,7 @@ namespace Discrete_Math_Project
             // 
             // DGV_Elements
             // 
+            this.DGV_Elements.AllowUserToAddRows = false;
             this.DGV_Elements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_Elements.Dock = System.Windows.Forms.DockStyle.Left;
             this.DGV_Elements.Location = new System.Drawing.Point(0, 74);

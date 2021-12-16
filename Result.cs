@@ -12,6 +12,7 @@ namespace Discrete_Math_Project
 {
     public partial class Result : Form
     {
+        #region Matrix, DataTable,... initialize
         DataTable result; //Passed from the main form
         DataTable matrix; //Matrix that hold the 1 and 0
         DataTable matrix_square; //matrix*matrix = matrix_square => For checking Transitive
@@ -19,7 +20,10 @@ namespace Discrete_Math_Project
         int[,] multid_array_for_table;
         int max_number_to_create_matrix;
         int min_number_to_create_matrix;
+        #endregion
 
+
+        #region Properties Variable
         bool reflexive = false;
         bool symmetric = false;
         bool antisymmetric = false;
@@ -27,17 +31,23 @@ namespace Discrete_Math_Project
         bool partial_order = false;
         bool total_order = false;
         bool equivalent = false;
+        #endregion
 
+
+        #region Constructor
         public Result(DataTable temp, int elements)
         {
             InitializeComponent();
+            this.Result_Matrix.Font = new Font("Arial", 18);
             this.result = temp;
             this.number_of_row = elements;
             this.Equivalence_Class_Btn.Enabled = false;
 
+            #region Matrix Processing
             Max_Elements();
             create_Matrix();
             square_a_matrix();
+            #endregion
 
             #region Checking Relation
             try
@@ -47,7 +57,7 @@ namespace Discrete_Math_Project
                 antisymmetric = isAntiSymmetric();
                 transitive = isTransitive();
                 partial_order = isPartial();
-
+                if (partial_order) total_order = isTotal();
                 equivalent = isEquivalent();
                 if (equivalent) this.Equivalence_Class_Btn.Enabled = true;
             }
@@ -60,6 +70,7 @@ namespace Discrete_Math_Project
 
             Display_Props();
         }
+        #endregion
 
 
         #region Relation determination
@@ -143,14 +154,23 @@ namespace Discrete_Math_Project
         }
         private bool isTotal()
         {
-            string cell = "0";
+            string cell_xy;
+            string cell_yx;
+                       
             for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
-                for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
+            {
+                for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; j++)
                 {
-                    cell = matrix.Rows[i][j].ToString();
-                    if (cell == "0") return false;
+                    Console.Write(i + "-" + j + " ");
+                    cell_xy = matrix.Rows[i][j].ToString();
+                    cell_yx = matrix.Rows[j][i].ToString();
+                    
+                    //Console.WriteLine(cell_xy + "   " + cell_yx);
+                    if (cell_xy == "0" && cell_yx == "0") return false;
                 }
-            return true;
+                Console.WriteLine();
+            }                    
+            return true;                            
         }
         private bool isEquivalent()
         {
@@ -177,7 +197,7 @@ namespace Discrete_Math_Project
         #endregion
 
 
-        #region Find max value
+        #region Find max and min value
         private void Max_Elements()
         {
             multid_array_for_table = new int[number_of_row, 2];
@@ -248,6 +268,7 @@ namespace Discrete_Math_Project
                 }
                 Console.WriteLine("=============================");
                 this.Result_Matrix.DataSource = matrix;
+                this.Result_Matrix.AutoResizeColumns();
             }
             catch(Exception)
             {
@@ -302,7 +323,6 @@ namespace Discrete_Math_Project
                     }
                     Console.WriteLine("");
                 }
-
             }   
             catch(Exception)
             {
@@ -311,12 +331,14 @@ namespace Discrete_Math_Project
         }
         #endregion
 
+
         #region Message to re-enable INPUT button
         private void Result_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
         }
         #endregion
+
 
         #region Button Controls
         private void Equivalence_Class_Btn_Click(object sender, EventArgs e)

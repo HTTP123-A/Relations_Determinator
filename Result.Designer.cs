@@ -33,15 +33,15 @@ namespace Discrete_Math_Project
             this.Result_Label = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Equivalence_Class_Btn = new System.Windows.Forms.Button();
+            this.CB_Equivalent = new System.Windows.Forms.CheckBox();
+            this.CB_Total = new System.Windows.Forms.CheckBox();
+            this.CB_Partial = new System.Windows.Forms.CheckBox();
             this.CB_Transitive = new System.Windows.Forms.CheckBox();
             this.CB_isAntiSymmetric = new System.Windows.Forms.CheckBox();
             this.CB_isSymmetric = new System.Windows.Forms.CheckBox();
             this.CB_isReflexive = new System.Windows.Forms.CheckBox();
             this.Result_Matrix = new System.Windows.Forms.DataGridView();
-            this.CB_Equivalent = new System.Windows.Forms.CheckBox();
-            this.CB_Total = new System.Windows.Forms.CheckBox();
-            this.CB_Partial = new System.Windows.Forms.CheckBox();
-            this.Equivalence_Class_Btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -92,6 +92,59 @@ namespace Discrete_Math_Project
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(164, 361);
             this.panel3.TabIndex = 1;
+            // 
+            // Equivalence_Class_Btn
+            // 
+            this.Equivalence_Class_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Equivalence_Class_Btn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Equivalence_Class_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Equivalence_Class_Btn.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Equivalence_Class_Btn.Location = new System.Drawing.Point(0, 311);
+            this.Equivalence_Class_Btn.Name = "Equivalence_Class_Btn";
+            this.Equivalence_Class_Btn.Size = new System.Drawing.Size(164, 50);
+            this.Equivalence_Class_Btn.TabIndex = 7;
+            this.Equivalence_Class_Btn.Text = "Equivalence Classes";
+            this.Equivalence_Class_Btn.UseVisualStyleBackColor = false;
+            this.Equivalence_Class_Btn.Click += new System.EventHandler(this.Equivalence_Class_Btn_Click);
+            // 
+            // CB_Equivalent
+            // 
+            this.CB_Equivalent.AutoCheck = false;
+            this.CB_Equivalent.AutoSize = true;
+            this.CB_Equivalent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CB_Equivalent.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_Equivalent.Location = new System.Drawing.Point(0, 162);
+            this.CB_Equivalent.Name = "CB_Equivalent";
+            this.CB_Equivalent.Size = new System.Drawing.Size(164, 27);
+            this.CB_Equivalent.TabIndex = 6;
+            this.CB_Equivalent.Text = "Equivalent";
+            this.CB_Equivalent.UseVisualStyleBackColor = true;
+            // 
+            // CB_Total
+            // 
+            this.CB_Total.AutoCheck = false;
+            this.CB_Total.AutoSize = true;
+            this.CB_Total.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CB_Total.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_Total.Location = new System.Drawing.Point(0, 135);
+            this.CB_Total.Name = "CB_Total";
+            this.CB_Total.Size = new System.Drawing.Size(164, 27);
+            this.CB_Total.TabIndex = 5;
+            this.CB_Total.Text = "Total Order";
+            this.CB_Total.UseVisualStyleBackColor = true;
+            // 
+            // CB_Partial
+            // 
+            this.CB_Partial.AutoCheck = false;
+            this.CB_Partial.AutoSize = true;
+            this.CB_Partial.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CB_Partial.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_Partial.Location = new System.Drawing.Point(0, 108);
+            this.CB_Partial.Name = "CB_Partial";
+            this.CB_Partial.Size = new System.Drawing.Size(164, 27);
+            this.CB_Partial.TabIndex = 4;
+            this.CB_Partial.Text = "Partial Order";
+            this.CB_Partial.UseVisualStyleBackColor = true;
             // 
             // CB_Transitive
             // 
@@ -147,65 +200,14 @@ namespace Discrete_Math_Project
             // 
             // Result_Matrix
             // 
+            this.Result_Matrix.AllowUserToAddRows = false;
             this.Result_Matrix.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Result_Matrix.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Result_Matrix.Location = new System.Drawing.Point(0, 0);
             this.Result_Matrix.Name = "Result_Matrix";
+            this.Result_Matrix.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Result_Matrix.Size = new System.Drawing.Size(774, 361);
             this.Result_Matrix.TabIndex = 0;
-            // 
-            // CB_Equivalent
-            // 
-            this.CB_Equivalent.AutoCheck = false;
-            this.CB_Equivalent.AutoSize = true;
-            this.CB_Equivalent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CB_Equivalent.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_Equivalent.Location = new System.Drawing.Point(0, 162);
-            this.CB_Equivalent.Name = "CB_Equivalent";
-            this.CB_Equivalent.Size = new System.Drawing.Size(164, 27);
-            this.CB_Equivalent.TabIndex = 6;
-            this.CB_Equivalent.Text = "Equivalent";
-            this.CB_Equivalent.UseVisualStyleBackColor = true;
-            // 
-            // CB_Total
-            // 
-            this.CB_Total.AutoCheck = false;
-            this.CB_Total.AutoSize = true;
-            this.CB_Total.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CB_Total.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_Total.Location = new System.Drawing.Point(0, 135);
-            this.CB_Total.Name = "CB_Total";
-            this.CB_Total.Size = new System.Drawing.Size(164, 27);
-            this.CB_Total.TabIndex = 5;
-            this.CB_Total.Text = "Total Order";
-            this.CB_Total.UseVisualStyleBackColor = true;
-            // 
-            // CB_Partial
-            // 
-            this.CB_Partial.AutoCheck = false;
-            this.CB_Partial.AutoSize = true;
-            this.CB_Partial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CB_Partial.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_Partial.Location = new System.Drawing.Point(0, 108);
-            this.CB_Partial.Name = "CB_Partial";
-            this.CB_Partial.Size = new System.Drawing.Size(164, 27);
-            this.CB_Partial.TabIndex = 4;
-            this.CB_Partial.Text = "Partial Order";
-            this.CB_Partial.UseVisualStyleBackColor = true;
-            // 
-            // Equivalence_Class_Btn
-            // 
-            this.Equivalence_Class_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Equivalence_Class_Btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Equivalence_Class_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Equivalence_Class_Btn.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Equivalence_Class_Btn.Location = new System.Drawing.Point(0, 311);
-            this.Equivalence_Class_Btn.Name = "Equivalence_Class_Btn";
-            this.Equivalence_Class_Btn.Size = new System.Drawing.Size(164, 50);
-            this.Equivalence_Class_Btn.TabIndex = 7;
-            this.Equivalence_Class_Btn.Text = "Equivalence Classes";
-            this.Equivalence_Class_Btn.UseVisualStyleBackColor = false;
-            this.Equivalence_Class_Btn.Click += new System.EventHandler(this.Equivalence_Class_Btn_Click);
             // 
             // Result
             // 

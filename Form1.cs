@@ -12,18 +12,25 @@ namespace Discrete_Math_Project
 {
     public partial class Form1 : Form
     {
+        #region Initialize variables and data types
         int Num_Of_Element = 0;
         DataTable Elements;
+        #endregion
 
+
+        #region Constructor
         public Form1()
         {
             InitializeComponent();
             this.Element_Count_TextBox.Focus();
             this.Relation_Btn.Enabled = false;
-            this.Enter_Btn.Enabled = false;            
+            this.Enter_Btn.Enabled = false;
+            this.DGV_Elements.DefaultCellStyle.Font = new Font("Arial", 16);
         }
+        #endregion
 
-        #region Enter button to enter data
+
+        #region Button Controls
         private void Num_Element_Btn_Click(object sender, EventArgs e)
         {
             try
@@ -42,8 +49,8 @@ namespace Discrete_Math_Project
                     row_data["Y"] = "0";
                     Elements.Rows.Add(row_data);
                 }
-
                 this.DGV_Elements.DataSource = Elements;
+                this.DGV_Elements.AutoResizeColumns();
                 this.Elements.Dispose();
                 //MessageBox.Show("Add successfully number of elements!", "Number of Element:", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

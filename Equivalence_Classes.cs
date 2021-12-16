@@ -12,22 +12,25 @@ namespace Discrete_Math_Project
 {
     public partial class Equivalence_Classes : Form
     {
+        #region Initial Variables and Data Types for passing data
         DataTable matrix;
         int min, max;
+        #endregion
 
-     
+
+        #region Constructor
         public Equivalence_Classes(DataTable temp, int min, int max)
         {
             InitializeComponent();
-
             this.matrix = temp;
             this.min = min;
             this.max = max;
-
             Equivalence_Classes_Display();
         }
+        #endregion
 
 
+        #region Find and Display equivalence class
         private void Equivalence_Classes_Display()
         {
             try
@@ -58,7 +61,11 @@ namespace Discrete_Math_Project
                 MessageBox.Show("Cannot Display Equivalence classes!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }                                      
         }
+        #endregion
 
+
+        #region Close Button
         private void Close_Btn_Click(object sender, EventArgs e) => this.Close();
+        #endregion
     }
 }
