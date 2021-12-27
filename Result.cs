@@ -93,9 +93,7 @@ namespace Discrete_Math_Project
             for (int i = 0; i <= max_number_to_create_matrix - min_number_to_create_matrix; i++)
             {
                 for (int j = 0; j <= max_number_to_create_matrix - min_number_to_create_matrix; j++)
-                {
-                    //string_xy = matrix.Rows[i - min_number_to_create_matrix][j - min_number_to_create_matrix].ToString();
-                    //string_yx = matrix.Rows[j - min_number_to_create_matrix][i - min_number_to_create_matrix].ToString();
+                {                    
                     string_xy = matrix.Rows[i][j].ToString();
                     string_yx = matrix.Rows[j][i].ToString();
                     if (((string_xy == "1") && (string_yx == "0")) || ((string_xy == "0") && (string_yx == "1")))
